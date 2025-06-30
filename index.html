@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulir Data Diri</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .form-container {
+      width: 450px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-section h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 7px;
+      margin-top: 3px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+
+    .dob-select {
+      display: flex;
+      gap: 5px;
+    }
+
+    .dob-select select {
+      flex: 1;
+    }
+
+    .info {
+      font-size: 11px;
+      color: #555;
+    }
+
+    .optional {
+      font-style: italic;
+      color: #999;
+      font-size: 12px;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .submit-button {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .submit-button button {
+      background-color: #28a745;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit-button button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <form>
+    <div class="form-section">
+      <h3>Informasi Pribadi</h3>
+      <label>Nama Lengkap:
+        <input type="text" name="nama_lengkap">
+      </label>
+      <label>NIK:
+        <input type="text" name="nik">
+      </label>
+      <label>Tanggal Lahir:</label>
+<select id="dob-day" name="day"></select>
+<select id="dob-month" name="month"></select>
+<select id="dob-year" name="year"></select>
+
+<script>
+// Isi dropdown tanggal
+let daySelect = document.getElementById("dob-day");
+for (let i = 1; i <= 31; i++) {
+  let opt = document.createElement("option");
+  opt.value = i;
+  opt.text = i;
+  daySelect.appendChild(opt);
+}
+
+// Isi dropdown bulan
+let monthSelect = document.getElementById("dob-month");
+const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+months.forEach((month, index) => {
+  let opt = document.createElement("option");
+  opt.value = index + 1;
+  opt.text = month;
+  monthSelect.appendChild(opt);
+});
+
+// Isi dropdown tahun (dari 1950 sampai 2025, bisa disesuaikan)
+let yearSelect = document.getElementById("dob-year");
+for (let y = 2025; y >= 1950; y--) {
+  let opt = document.createElement("option");
+  opt.value = y;
+  opt.text = y;
+  yearSelect.appendChild(opt);
+}
+</script>
+      <label for="gender">Jenis Kelamin:</label><br>
+<select id="gender" name="gender">
+  <option value="">-- Pilih Jenis Kelamin --</option>
+  <option value="male">Laki-laki</option>
+  <option value="female">Perempuan</option>
+  <option value="nonbinary">Non-biner</option>
+  <option value="transgender">Transgender</option>
+  <option value="agender">Agender</option>
+  <option value="other">Lainnya</option>
+  <option value="prefer_not">Tidak ingin menyebutkan</option>
+</select>
+
+
+    <div class="form-section">
+      <h3>Informasi Kontak</h3>
+      <label>Email Aktif:
+        <input type="email" name="email">
+      </label>
+      <label>No. HP:
+        <input type="text" name="hp">
+        <span class="info">Contoh: 0812xxxxxxx</span>
+      </label>
+      <label>Alamat:
+        <input type="text" name="alamat">
+      </label>
+      <label>Kota:
+        <input type="text" name="kota">
+      </label>
+      <label>Provinsi:
+        <select>
+          <option>Pilih Provinsi</option>
+          <option>Jawa Barat</option>
+          <option>DKI Jakarta</option>
+          <option>Jawa Tengah</option>
+        </select>
+      </label>
+      <label>Kode Pos:
+        <input type="text" name="kode_pos">
+        <span class="optional">Opsional</span>
+      </label>
+    </div>
+
+    <div class="form-section">
+      <h3>Data Diri</h3>
+      <label>Username Alay:
+        <input type="text" name="username">
+      </label>
+      <label>Kata Sandi(jangan ketahuan):
+        <input type="password" name="password">
+        <span class="info">(Min. 8 karakter, huruf dan angka)</span>
+      </label>
+      <label>Ulangi Kata Sandi ya Sayang:
+        <input type="password" name="password2">
+      </label>
+      <label>Pertanyaan Keamanan:
+        <select>
+          <option>Pilih Pertanyaan</option>
+          <option>Nama hewan peliharaan pertama?</option>
+          <option>Nama sekolah dasar kamu?</option>
+          <option>Nama Orang Tua?</option>
+          <option>Nama Selingkuhan?</option>
+          <option>Nama Mantan?</option>
+        </select>
+      </label>
+      <label>Jawaban Keamanan:
+        <input type="text" name="jawaban">
+      </label>
+    </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Kontak</title>
+</head>
+<body>
+
+  <form id="myForm" action="https://formsubmit.co/yehezkielmanuela@gmail.com" method="POST">
+    <input type="text" name="Nama" placeholder="Nama Lengkap" required><br><br>
+    <input type="email" name="Email" placeholder="Email" required><br><br>
+    <textarea name="Pesan" placeholder="Tulis pesan untuk ayang..." required></textarea><br><br>
+
+    <div id="successMessage" style="display: none; color: green;">
+      ✅ Pesan berhasil terkirim!
+    </div>
+
+    <button type="submit">Kirim</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("myForm");
+    const message = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Cegah reload
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          message.style.display = "block";
+          form.reset(); // kosongkan form
+        } else {
+          alert("Gagal mengirim. Coba lagi.");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+</body>
+</html>
